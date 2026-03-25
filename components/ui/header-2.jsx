@@ -4,34 +4,12 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { MenuToggleIcon } from "@/components/ui/menu-toggle-icon";
 import { useScroll } from "@/components/ui/use-scroll";
-import { Code } from "lucide-react";
+import { ArrowUpRight, Code } from "lucide-react";
+import { navbarLinks } from "@/constants/navbar-link";
 
 export function Header() {
   const [open, setOpen] = React.useState(false);
   const scrolled = useScroll(10);
-
-  const links = [
-    {
-      label: "Services",
-      href: "#services",
-    },
-    {
-      label: "Our Work",
-      href: "#work",
-    },
-    {
-      label: "Pricing",
-      href: "#contact",
-    },
-    {
-      label: "About",
-      href: "#work",
-    },
-    {
-      label: "FAQs",
-      href: "#faqs",
-    },
-  ];
 
   React.useEffect(() => {
     if (open) {
@@ -48,9 +26,9 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 mx-auto w-full max-w-5xl border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out",
+        "sticky md:mt-3 top-0 z-1000 mx-auto w-full max-w-6xl lg:max-w-7xl border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out",
         {
-          "bg-background/95 upports-backdrop-filter:bg-background/50 border-white/10 backdrop-blur-lg md:top-4 md:max-w-4xl md:shadow-lg":
+          "bg-transparent upports-backdrop-filter:bg-background/50 border-white/10 backdrop-blur-lg md:top-4 lg:max-w-6xl md:shadow-lg":
             scrolled && !open,
           "bg-background/90": open,
         },
@@ -69,7 +47,7 @@ export function Header() {
           <span className="font-bold text-foreground">CodeNest</span>
         </div>
         <div className="hidden items-center gap-2 md:flex">
-          {links.map((link, i) => (
+          {navbarLinks.map((link, i) => (
             <a
               key={i}
               className={buttonVariants({ variant: "ghost" })}
@@ -78,7 +56,9 @@ export function Header() {
               {link.label}
             </a>
           ))}
-          <Button>Get Started</Button>
+          <Button className="px-3 h-10 flex items-center gap-1">
+            Get Started <ArrowUpRight className="size-4" />
+          </Button>
         </div>
         <Button
           size="icon"
@@ -104,7 +84,7 @@ export function Header() {
           )}
         >
           <div className="grid gap-y-2">
-            {links.map((link) => (
+            {navbarLinks.map((link) => (
               <a
                 key={link.label}
                 className={buttonVariants({
@@ -119,7 +99,9 @@ export function Header() {
             ))}
           </div>
           <div className="pt-8 pb-4 flex flex-col gap-2">
-            <Button className="w-full">Get Started</Button>
+            <Button className="w-full flex items-center gap-2">
+              Get Started <ArrowUpRight className="size-4" />
+            </Button>
           </div>
         </div>
       </div>
