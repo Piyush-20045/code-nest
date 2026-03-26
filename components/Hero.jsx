@@ -47,10 +47,10 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
           >
             <Link
-              href="#contact"
-              className="bg-primary text-primary-foreground h-11 px-7 inline-flex items-center justify-center gap-2 rounded-md font-semibold text-base hover:opacity-90 transition-opacity"
+              href="/contact"
+              className="bg-primary text-primary-foreground h-11 px-7 inline-flex items-center justify-center gap-2 rounded-md font-semibold text-base hover:opacity-90 transition-opacity group"
             >
-              Get Started <ArrowUpRight className="size-4" />
+              Get Started <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
             <Link
               href="#work"

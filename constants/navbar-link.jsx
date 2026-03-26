@@ -1,5 +1,9 @@
 export const navbarLinks = [
   {
+    label: "About",
+    href: "#work",
+  },
+  {
     label: "Services",
     href: "#services",
   },
@@ -10,10 +14,6 @@ export const navbarLinks = [
   {
     label: "Pricing",
     href: "#contact",
-  },
-  {
-    label: "About",
-    href: "#work",
   },
   {
     label: "FAQs",

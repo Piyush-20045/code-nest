@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { MenuToggleIcon } from "@/components/ui/menu-toggle-icon";
 import { ArrowUpRight, Code } from "lucide-react";
 import { navbarLinks } from "@/constants/navbar-link";
+import Link from "next/link";
 
 export function Header() {
   const [open, setOpen] = React.useState(false);
@@ -30,13 +31,11 @@ export function Header() {
         },
       )}
     >
-      <nav
-        className="flex h-14 w-full items-center justify-between px-4 md:h-12 md:px-5"
-      >
-        <div className="flex items-center gap-2">
+      <nav className="flex h-14 w-full items-center justify-between px-4 md:h-12 md:px-5">
+        <Link href="/" className="flex items-center gap-2">
           <Code className="h-6 w-6 text-primary" />
           <span className="pt-0.5 font-bold text-foreground">CodeNest</span>
-        </div>
+        </Link>
         <div className="hidden items-center gap-2 md:flex">
           {navbarLinks.map((link, i) => (
             <a
@@ -47,9 +46,11 @@ export function Header() {
               {link.label}
             </a>
           ))}
-          <Button className="px-3 h-10 flex items-center gap-1 rounded-lg bg-neutral-100 text-black hover:bg-neutral-200 cursor-pointer">
-            Get Started <ArrowUpRight className="size-4" />
-          </Button>
+          <Link href="/contact">
+            <Button className="px-3 h-10 flex items-center gap-1 rounded-full bg-neutral-100 text-black hover:bg-neutral-200 cursor-pointer group">
+              Get Started <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Button>
+          </Link>
         </div>
         <Button
           size="icon"
@@ -91,9 +92,11 @@ export function Header() {
             ))}
           </div>
           <div className="pt-8 pb-4 flex flex-col gap-2">
-            <Button className="w-full flex items-center gap-2">
-              Get Started <ArrowUpRight className="size-4" />
-            </Button>
+            <Link href="/contact">
+              <Button className="w-full flex items-center gap-2">
+                Get Started <ArrowUpRight className="size-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
