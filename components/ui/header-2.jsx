@@ -24,7 +24,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-4 z-1000 mx-24 md:mx-auto w-auto md:w-full max-w-6xl lg:max-w-7xl rounded-2xl md:rounded-full border border-white/10 backdrop-blur-lg bg-background/60 shadow-lg transition-all ease-out",
+        "sticky top-4 z-1000 mx-3 md:mx-auto w-auto md:w-full max-w-6xl lg:max-w-7xl rounded-2xl md:rounded-full border border-white/10 backdrop-blur-lg bg-background/60 shadow-lg transition-all ease-out",
         {
           "bg-background/90 rounded-2xl md:rounded-md": open,
         },
@@ -35,7 +35,7 @@ export function Header() {
       >
         <div className="flex items-center gap-2">
           <Code className="h-6 w-6 text-primary" />
-          <span className="font-bold text-foreground">CodeNest</span>
+          <span className="pt-0.5 font-bold text-foreground">CodeNest</span>
         </div>
         <div className="hidden items-center gap-2 md:flex">
           {navbarLinks.map((link, i) => (

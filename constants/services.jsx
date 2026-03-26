@@ -1,0 +1,15 @@
+export const services = [
+  "Web Design",
+  "Development",
+  "UI UX Design",
+  "Landing Pages",
+  "Logos",
+  "Product Design",
+  "Copywriting",
+  "CMS Setup",
+  "Custom Website",
+  "Motion Graphics",
+  "Hosting",
+  "Maintenance",
+  "Site Migration",
+];

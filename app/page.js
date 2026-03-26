@@ -21,7 +21,7 @@ export default function Home() {
           imageRendering: 'pixelated',
         }}
       />
-      <div className="flex min-h-screen flex-col bg-background font-sans z-10">
+      <div className="flex min-h-screen flex-col bg-background font-mono z-10">
         <Navbar />
         <main className="flex-1 w-full">
           <Hero />
