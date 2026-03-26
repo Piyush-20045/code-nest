@@ -3,13 +3,11 @@ import React from "react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { MenuToggleIcon } from "@/components/ui/menu-toggle-icon";
-import { useScroll } from "@/components/ui/use-scroll";
 import { ArrowUpRight, Code } from "lucide-react";
 import { navbarLinks } from "@/constants/navbar-link";
 
 export function Header() {
   const [open, setOpen] = React.useState(false);
-  const scrolled = useScroll(10);
 
   React.useEffect(() => {
     if (open) {
@@ -26,21 +24,14 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky md:mt-3 top-0 z-1000 mx-auto w-full max-w-6xl lg:max-w-7xl border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out",
+        "sticky top-4 z-1000 mx-24 md:mx-auto w-auto md:w-full max-w-6xl lg:max-w-7xl rounded-2xl md:rounded-full border border-white/10 backdrop-blur-lg bg-background/60 shadow-lg transition-all ease-out",
         {
-          "bg-transparent upports-backdrop-filter:bg-background/50 border-white/10 backdrop-blur-lg md:top-4 lg:max-w-6xl md:shadow-lg":
-            scrolled && !open,
-          "bg-background/90": open,
+          "bg-background/90 rounded-2xl md:rounded-md": open,
         },
       )}
     >
       <nav
-        className={cn(
-          "flex h-14 w-full items-center justify-between px-4 md:h-12 md:transition-all md:ease-out",
-          {
-            "md:px-2": scrolled,
-          },
-        )}
+        className="flex h-14 w-full items-center justify-between px-4 md:h-12 md:px-5"
       >
         <div className="flex items-center gap-2">
           <Code className="h-6 w-6 text-primary" />
@@ -56,7 +47,7 @@ export function Header() {
               {link.label}
             </a>
           ))}
-          <Button className="px-3 h-10 flex items-center gap-1">
+          <Button className="px-3 h-10 flex items-center gap-1 rounded-lg bg-neutral-100 text-black hover:bg-neutral-200 cursor-pointer">
             Get Started <ArrowUpRight className="size-4" />
           </Button>
         </div>
@@ -70,9 +61,10 @@ export function Header() {
         </Button>
       </nav>
 
+      {/* Mobile Navigation */}
       <div
         className={cn(
-          "bg-background/90 h-fit fixed top-14 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y border-white/10 md:hidden",
+          "bg-background/95 h-fit fixed top-14 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y border-white/10 md:hidden",
           open ? "block" : "hidden",
         )}
       >
