@@ -4,6 +4,7 @@ import Services from "@/components/Services";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
 import Cta from "@/components/Cta";
+import Faq from "@/components/Faq";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
           <Hero />
           <Services />
           <Projects />
+          <Faq />
           <Cta />
         </main>
         <Footer />
