@@ -1,31 +1,107 @@
+"use client";
+import { motion } from "framer-motion";
+
+const row1 = [
+  "/projects/1.png",
+  "/projects/2.png",
+  "/projects/3.png",
+  "/projects/4.png",
+];
+
+const row2 = [
+  "/projects/5.png",
+  "/projects/6.png",
+  "/projects/7.png",
+  "/projects/8.png",
+];
+
 export default function Projects() {
-  const projects = [
-    { name: "Coffee Roasters", desc: "Local cafe website with online ordering", tech: "Next.js, Tailwind", img: "https://images.unsplash.com/photo-1497935586351-b6a84f3e3e06?w=800&q=80" },
-    { name: "FitLife Gym", desc: "Membership portal and class schedules", tech: "React, Node.js", img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80" },
-    { name: "Artisan Woodworks", desc: "E-commerce store for custom furniture", tech: "Shopify, Next.js", img: "https://images.unsplash.com/photo-1610505466023-eeb251f22495?w=800&q=80" },
-  ];
+  // Duplicate arrays to create a seamless infinite scroll loop.
+  // We double it so the motion animates from 0 to -50% smoothly.
+  const duplicatedRow1 = [...row1, ...row1];
+  const duplicatedRow2 = [...row2, ...row2];
 
   return (
-    <section id="work" className="w-full max-w-[1200px] mx-auto py-20 px-4">
-      <div className="mb-12 text-center md:text-left">
-        <h2 className="text-3xl font-bold text-foreground">Our Work</h2>
+    <section id="work" className="w-full py-24 overflow-hidden relative z-10">
+      <div className="max-w-[1200px] mx-auto px-4 mb-16 text-center md:text-left">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <span
+            className="inline-flex items-center gap-2 text-sm border border-white/10 rounded-full px-4 py-1.5 bg-white/3 mb-6"
+            style={{ color: "#9ca3af" }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#feda6a]" />
+            Our Portfolio
+          </span>
+          <h2
+            className="text-4xl md:text-5xl font-extrabold tracking-tight"
+            style={{ color: "#ffffff" }}
+          >
+            Featured Projects
+          </h2>
+        </motion.div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((p, i) => (
-          <div key={i} className="bg-card rounded-md overflow-hidden shadow-sm border border-white/5 flex flex-col group">
-            <div className="relative w-full h-48 overflow-hidden">
-              <img src={p.img} alt={p.name} className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" />
-            </div>
-            <div className="p-6 flex flex-col flex-grow">
-              <h3 className="text-xl font-semibold text-foreground mb-2">{p.name}</h3>
-              <p className="text-muted-foreground text-sm mb-4 flex-grow">{p.desc}</p>
-              <div className="text-xs text-primary/80 mb-6">{p.tech}</div>
-              <button className="w-full bg-background border border-white/10 text-foreground py-2 rounded-md font-medium text-sm hover:bg-white/5 transition-colors">
-                View Project
-              </button>
-            </div>
-          </div>
-        ))}
+
+      <div className="flex flex-col gap-8 md:gap-12 relative w-full">
+        {/* Top and Bottom Gradients for smooth fading edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-40 bg-linear-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-40 bg-linear-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+
+        {/* Row 1 - Right to Left */}
+        <div className="flex w-full overflow-hidden">
+          <motion.div
+            animate={{ x: [0, "-50%"] }}
+            transition={{
+              repeat: Infinity,
+              duration: 40,
+              ease: "linear",
+            }}
+            className="flex gap-6 md:gap-8 w-max px-4"
+          >
+            {duplicatedRow1.map((src, idx) => (
+              <div
+                key={`row1-${idx}`}
+                className="relative w-[320px] md:w-[480px] h-[200px] md:h-[300px] rounded-2xl overflow-hidden shrink-0 border border-white/10 bg-white/5"
+              >
+                <img
+                  src={src}
+                  alt={`Project image ${idx}`}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Row 2 - Left to Right */}
+        <div className="flex w-full overflow-hidden">
+          <motion.div
+            animate={{ x: ["-50%", 0] }}
+            transition={{
+              repeat: Infinity,
+              duration: 35,
+              ease: "linear",
+            }}
+            className="flex gap-6 md:gap-8 w-max px-4"
+          >
+            {duplicatedRow2.map((src, idx) => (
+              <div
+                key={`row2-${idx}`}
+                className="relative w-[320px] md:w-[480px] h-[200px] md:h-[300px] rounded-2xl overflow-hidden shrink-0 border border-white/10 bg-white/5"
+              >
+                <img
+                  src={src}
+                  alt={`Project image ${idx}`}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
