@@ -1,22 +1,22 @@
 export const navbarLinks = [
   {
     label: "About",
-    href: "#about",
+    href: "/#about",
   },
   {
     label: "Services",
-    href: "#services",
+    href: "/#services",
   },
   {
     label: "Our Work",
-    href: "#work",
+    href: "/#work",
   },
   {
     label: "Pricing",
-    href: "#contact",
+    href: "/#pricing",
   },
   {
     label: "FAQs",
-    href: "#faqs",
+    href: "/#faqs",
   },
 ];
